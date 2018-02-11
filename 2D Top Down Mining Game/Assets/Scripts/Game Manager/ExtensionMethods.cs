@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class ExtensionMethods
 {
+    //Method which looks at an object
     public static void LookAt2D(this Transform transform, Vector2 target)
     {
         Vector2 current = transform.position;

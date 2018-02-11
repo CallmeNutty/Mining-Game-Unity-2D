@@ -261,7 +261,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 302568365}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.212789, y: -0.040288925, z: -0.34406358}
+  m_LocalPosition: {x: 0.35, y: 1.53, z: -0.34406358}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 1172484627}
@@ -51006,34 +51006,6 @@ Tilemap:
     m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 0
---- !u!1 &809692988
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 809692989}
-  m_Layer: 0
-  m_Name: FiringPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &809692989
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 809692988}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.001, y: 0.23, z: 0.09354429}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_Children: []
-  m_Father: {fileID: 1108863598}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &974529524
 GameObject:
   m_ObjectHideFlags: 0
@@ -51103,11 +51075,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1108863598 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4691858814695716, guid: c8fcd0e8bb9086547bb1cbb1939c7a1a,
-    type: 2}
-  m_PrefabInternal: {fileID: 1544337143}
 --- !u!1 &1172484626
 GameObject:
   m_ObjectHideFlags: 0
@@ -51207,20 +51174,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114457195289857584, guid: c8fcd0e8bb9086547bb1cbb1939c7a1a,
         type: 2}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1917456785035506, guid: e7480b952af2fbc45ab796975bbcaa56,
-        type: 2}
-    - target: {fileID: 114457195289857584, guid: c8fcd0e8bb9086547bb1cbb1939c7a1a,
-        type: 2}
       propertyPath: emptyBulletHolder
       value: 
       objectReference: {fileID: 1055277083}
-    - target: {fileID: 114457195289857584, guid: c8fcd0e8bb9086547bb1cbb1939c7a1a,
-        type: 2}
-      propertyPath: firingPoint
-      value: 
-      objectReference: {fileID: 809692988}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8fcd0e8bb9086547bb1cbb1939c7a1a, type: 2}
   m_IsPrefabParent: 0
