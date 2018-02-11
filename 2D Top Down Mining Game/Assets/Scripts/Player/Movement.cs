@@ -19,5 +19,15 @@ public class Movement : MonoBehaviour
         {
             rb2d.AddRelativeForce(new Vector2(0, 5), ForceMode2D.Force);
         }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb2d.AddForce(new Vector2(-2, 0), ForceMode2D.Force);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            rb2d.AddForce(new Vector2(2, 0), ForceMode2D.Force);
+        }
 	}
 }
