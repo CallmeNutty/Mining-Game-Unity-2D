@@ -12,6 +12,7 @@ public class InventoryManager : MonoBehaviour
     private Image menu;
 
     public static Dictionary<string, int> Inventory = new Dictionary<string, int>();
+    public static List<string> InventoryList = new List<string>();
 	
 	// Update is called once per frame
 	void Update ()
@@ -29,16 +30,17 @@ public class InventoryManager : MonoBehaviour
     }
 
     //Method which displays an item on the GUI
-    public void AddToInventory(int itemCount, Sprite icon)
+    public void AddToInventory(int itemCount, string name, Sprite icon)
     {
         panel.transform.GetChild(Inventory.Count - 1).transform.GetChild(0).GetComponent<Image>().sprite = icon; //Display icon
         panel.transform.GetChild(Inventory.Count - 1).transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 255); //Make icon visible
+        InventoryList.Add(name);
     }
 
     //Display text next to item in inventory
-    public void ItemCount(int itemCount)
+    public void ItemCount(int itemCount, int index)
     {
-        panel.transform.GetChild(Inventory.Count - 1).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = itemCount.ToString();
+        panel.transform.GetChild(index).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = itemCount.ToString();
     }
 
     //Methods which activate and deactivate objects

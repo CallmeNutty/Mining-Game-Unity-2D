@@ -17,13 +17,13 @@ public class Minerals : MonoBehaviour
             if (InventoryManager.Inventory.ContainsKey(mineral.name))
             {
                 InventoryManager.Inventory[mineral.name] += 1; //Add '1' to the stack(amount collected)
-                inventoryManager.ItemCount(InventoryManager.Inventory[mineral.name]); //Display correct text
+                inventoryManager.ItemCount(InventoryManager.Inventory[mineral.name], InventoryManager.InventoryList.IndexOf(mineral.name)); //Display correct text
             }
             else //If this is the first copy
             {
                 InventoryManager.Inventory.Add(mineral.name, 1); //Create new entry in direction
-                inventoryManager.AddToInventory(InventoryManager.Inventory[mineral.name], mineral.icon); //Display on GUI
-                inventoryManager.ItemCount(InventoryManager.Inventory[mineral.name]); //Display correct text
+                inventoryManager.AddToInventory(InventoryManager.Inventory[mineral.name], mineral.name, mineral.icon); //Display on GUI
+                inventoryManager.ItemCount(InventoryManager.Inventory[mineral.name], InventoryManager.Inventory.Count - 1); //Display correct text
             }
 
             Destroy(coll.gameObject);
