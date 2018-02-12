@@ -15,10 +15,4 @@ public class InventoryManager : MonoBehaviour
         Inventory.Add("Osmanium", 0);
         Inventory.Add("Glorium", 0);
     }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        print(Inventory["Gulm"]);
-	}
 }
