@@ -5,50 +5,46 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
+    //Declare Variables
     [SerializeField]
     private Image panel;
+    [SerializeField]
+    private Image menu;
 
     public static Dictionary<string, int> Inventory = new Dictionary<string, int>();
-
-    public static List<Sprite> panelInventory = new List<Sprite>();
-
-    // Use this for initialization
-    void Start ()
-    {
-		
-	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if(Input.GetKeyDown(KeyCode.E) && panel.gameObject.activeInHierarchy == true)
+        //If E is pressed and menu isn't currently displayed
+        if(Input.GetKeyDown(KeyCode.E) && menu.gameObject.activeInHierarchy == true)
         {
-            ActivatePanel(panel, false);
+            ActivatePanel(menu, false);
         }
+        //If E is pressed and menu is currently displayed
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            ActivatePanel(panel, true);
+            ActivatePanel(menu, true);
         }
+    }
 
-        for(int k = 0; k < panel.transform.childCount; k++)
-        {
-            if (panelInventory.Count <= k)
-            {
-                break;
-            }
-            else
-            {
-                panel.transform.GetChild(k).transform.GetChild(0).GetComponent<Image>().sprite = panelInventory[k];
-                panel.transform.GetChild(k).transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 255);
-            }
-        }
+    //Method which displays an item on the GUI
+    public void AddToInventory(int itemCount, Sprite icon)
+    {
+        panel.transform.GetChild(Inventory.Count - 1).transform.GetChild(0).GetComponent<Image>().sprite = icon; //Display icon
+        panel.transform.GetChild(Inventory.Count - 1).transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 255); //Make icon visible
+    }
 
+    //Display text next to item in inventory
+    public void ItemCount(int itemCount)
+    {
+        panel.transform.GetChild(Inventory.Count - 1).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = itemCount.ToString();
     }
 
     //Methods which activate and deactivate objects
-    public void ActivatePanel(Image gameObject, bool activate)
+    public void ActivatePanel(Image image, bool activate)
     {
-        gameObject.gameObject.SetActive(activate);
+        image.gameObject.SetActive(activate);
         Time.timeScale = activate == true ? 0 : 1;
     }
 }
