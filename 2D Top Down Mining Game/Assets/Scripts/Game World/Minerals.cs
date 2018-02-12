@@ -8,7 +8,8 @@ public class Minerals : MonoBehaviour
     {
         if (coll.gameObject.tag == "Bullet")
         {
-            InventoryManager.Inventory[mineral.name] += 1;
+            InventoryManager.Inventory.Add(mineral.name);
+            Panel.panelInventory.Add(mineral.icon);
             Destroy(coll.gameObject);
             Destroy(gameObject);
         }
@@ -19,19 +20,8 @@ public class Minerals : MonoBehaviour
     {
         public string name;
         public int health;
+        public Sprite icon;
     }
 
     public Mineral mineral;
-
-	// Use this for initialization
-	void Start ()
-    {
-
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
 }
