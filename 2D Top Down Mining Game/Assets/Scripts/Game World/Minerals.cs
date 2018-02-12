@@ -8,8 +8,15 @@ public class Minerals : MonoBehaviour
     {
         if (coll.gameObject.tag == "Bullet")
         {
-            InventoryManager.Inventory.Add(mineral.name);
-            Panel.panelInventory.Add(mineral.icon);
+            if (InventoryManager.Inventory.ContainsKey(mineral.name))
+            {
+                InventoryManager.Inventory[mineral.name] += 1;
+            }
+            else
+            {
+                InventoryManager.Inventory.Add(mineral.name, 1);
+            }
+            InventoryManager.panelInventory.Add(mineral.icon);
             Destroy(coll.gameObject);
             Destroy(gameObject);
         }

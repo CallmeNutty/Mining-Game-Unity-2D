@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Panel : MonoBehaviour
+public class InventoryManager : MonoBehaviour
 {
     [SerializeField]
     private Image panel;
+
+    public static Dictionary<string, int> Inventory = new Dictionary<string, int>();
 
     public static List<Sprite> panelInventory = new List<Sprite>();
 
