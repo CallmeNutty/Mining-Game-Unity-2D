@@ -10,6 +10,10 @@ public class InventoryManager : MonoBehaviour
     private Image panel;
     [SerializeField]
     private Image menu;
+    [SerializeField]
+    private Image eKey;
+
+    public static bool eKeyFree = true;
 
     public static Dictionary<string, int> Inventory = new Dictionary<string, int>();
     public static List<string> InventoryList = new List<string>();
@@ -17,16 +21,19 @@ public class InventoryManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        //If E is pressed and menu isn't currently displayed
-        if(Input.GetKeyDown(KeyCode.E) && menu.gameObject.activeInHierarchy == true)
+        //If E is pressed and menu is currently displayed
+        if(Input.GetKeyDown(KeyCode.E) && menu.gameObject.activeInHierarchy == true && eKeyFree == true)
         {
             ActivatePanel(menu, false);
         }
-        //If E is pressed and menu is currently displayed
-        else if (Input.GetKeyDown(KeyCode.E))
+        //If E is pressed and menu isn't currently displayed
+        else if (Input.GetKeyDown(KeyCode.E) && eKeyFree == true)
         {
             ActivatePanel(menu, true);
         }
+
+        //Activate Inventory Key Prompt
+        eKey.gameObject.SetActive(eKeyFree);
     }
 
     //Method which displays an item on the GUI
