@@ -1,39 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Planets : MonoBehaviour
 {
+    //Declare Variables
     [SerializeField]
     private GameObject eKey;
+    [SerializeField]
+    private GameObject planetMenu;
 
-    void OnTriggerEnter2D(Collider2D coll)
+    public Text[,] text;
+    
+    //Entered Planet Zone
+    void OnTriggerStay2D(Collider2D coll)
     {
-        if (coll.tag == "Player")
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            InventoryManager.eKeyFree = false;
-            eKey.SetActive(true);
+            planetMenu.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else if (coll.tag == "Player")
+        {
+            InventoryManager.eKeyFree = false; //Hide other "e key" prompts
+            eKey.SetActive(true); //Show this prompt
         }
     }
 
+    //Exited Planet Zone
     void OnTriggerExit2D(Collider2D coll)
     {
         if (coll.tag == "Player")
         {
-            InventoryManager.eKeyFree = true;
-            eKey.SetActive(false);
+            InventoryManager.eKeyFree = true; //Show other "e key" prompts
+            eKey.SetActive(false); //Hide this prompt
         }
     }
-
-    // Use this for initialization
-    void Start ()
-    {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
 }
