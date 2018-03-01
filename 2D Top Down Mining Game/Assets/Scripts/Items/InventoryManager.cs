@@ -7,7 +7,7 @@ public class InventoryManager : MonoBehaviour
 {
     //Declare Variables
     [SerializeField]
-    private Image panel;
+    private GameObject panel;
     [SerializeField]
     private Image menu;
     [SerializeField]
@@ -17,10 +17,22 @@ public class InventoryManager : MonoBehaviour
 
     public static bool eKeyFree = true;
 
+    public Image[] InventorySlots;
     public List<Item> Inventory = new List<Item>();
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Use this for initialization
+    void Start()
+    {
+        InventorySlots = new Image[panel.transform.childCount];
+
+        for(int k = 0; k < InventorySlots.Length; k++)
+        {
+            InventorySlots[k] = panel.transform.GetChild(k).GetComponent<Image>();
+        }
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         //If E is pressed and menu is currently displayed
         if(Input.GetKeyDown(KeyCode.E) && menu.gameObject.activeInHierarchy == true && eKeyFree == true)
@@ -56,9 +68,9 @@ public class InventoryManager : MonoBehaviour
     }
 
     //Display text next to item in inventory
-    public void DisplayItemCount(int itemCount, int index)
+    public void DisplayItem(GameObject panel)
     {
-        panel.transform.GetChild(index).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = itemCount.ToString();
+        
     }
 
     //Methods which activate and deactivate objects
