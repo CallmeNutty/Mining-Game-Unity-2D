@@ -12,11 +12,12 @@ public class InventoryManager : MonoBehaviour
     private Image menu;
     [SerializeField]
     private Image eKey;
+    [SerializeField]
+    private ItemDatabase itemDatabase;
 
     public static bool eKeyFree = true;
 
-    public static Dictionary<string, int> Inventory = new Dictionary<string, int>();
-    public static List<string> InventoryList = new List<string>();
+    public List<Item> Inventory = new List<Item>();
 	
 	// Update is called once per frame
 	void Update ()
@@ -37,11 +38,15 @@ public class InventoryManager : MonoBehaviour
     }
 
     //Method which displays an item on the GUI
-    public void AddToInventory(int itemCount, string name, Sprite icon)
+    public void AddToInventory(int ID, int amount)
     {
-        panel.transform.GetChild(Inventory.Count - 1).transform.GetChild(0).GetComponent<Image>().sprite = icon; //Display icon
-        panel.transform.GetChild(Inventory.Count - 1).transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 255); //Make icon visible
-        InventoryList.Add(name);
+        for (int k = 0; k < itemDatabase.database.Count; k++)
+        {
+            if (itemDatabase.database[k].ID == ID)
+            {
+                Inventory.Add(itemDatabase.database[k]);
+            }
+        }
     }
 
     //Display text next to item in inventory
