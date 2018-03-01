@@ -10,17 +10,16 @@ public class Planets : MonoBehaviour
     private GameObject eKey;
     [SerializeField]
     private GameObject planetMenu;
-
-    public Text[,] text;
     
     //Entered Planet Zone
     void OnTriggerStay2D(Collider2D coll)
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            planetMenu.SetActive(true);
+            planetMenu.SetActive(true); //Show planet UI
             Time.timeScale = 0;
         }
+        //If player has entered the zone
         else if (coll.tag == "Player")
         {
             InventoryManager.eKeyFree = false; //Hide other "e key" prompts

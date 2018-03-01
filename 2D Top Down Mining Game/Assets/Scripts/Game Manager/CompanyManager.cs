@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class CompanyManager : MonoBehaviour
 {
+    //Declare Variables
+    public string companyName;
+
     [SerializeField]
     private Text companyNameText;
-
-    public string companyName;
 
 	// Use this for initialization
 	void Start ()

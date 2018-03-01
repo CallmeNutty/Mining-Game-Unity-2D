@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Money : MonoBehaviour
 {
-
+    //Declare Variables
     [SerializeField]
     private Text moneyText;
     [SerializeField]
@@ -16,12 +16,14 @@ public class Money : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        //Reduce opacity of money backdrop
         moneyTextBackdrop.color = new Color(moneyText.color.r, moneyText.color.g, moneyText.color.b, 0.25f);
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        //Show money on UI
         moneyText.text = money + "$";
 	}
 }
