@@ -22,7 +22,6 @@ public class Minerals : MonoBehaviour
             if (inventoryManager.Inventory.Any(x => x.ID == thisItem.ID))
             {
                 inventoryManager.Inventory.Find(x => x.ID == thisItem.ID).amount++; //Add to Inventory
-                inventoryManager.AddToInventorySlots(itemDatabase.database.Find(x => x.ID == 1).icon);
                 Destroy(coll.gameObject); //Destroy Bullet
                 Destroy(gameObject); //Destroy self
             }

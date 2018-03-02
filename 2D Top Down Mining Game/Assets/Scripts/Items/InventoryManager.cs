@@ -20,6 +20,7 @@ public class InventoryManager : MonoBehaviour
     public Sprite[] inventorySlots;
     public List<Item> Inventory = new List<Item>();
 
+
     // Use this for initialization
     void Start()
     {
@@ -32,6 +33,7 @@ public class InventoryManager : MonoBehaviour
             inventorySlots[k] = panel.transform.GetChild(k).GetChild(0).GetComponent<Image>().sprite;
         }
     }
+
 
     // Update is called once per frame
     void Update ()
@@ -55,6 +57,7 @@ public class InventoryManager : MonoBehaviour
         //Activate Inventory Key Prompt
         eKey.gameObject.SetActive(eKeyFree);
     }
+
 
     //Adds item to the inventory
     public void AddToInventory(int ID, int amount)
@@ -93,11 +96,7 @@ public class InventoryManager : MonoBehaviour
         {
             panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().sprite = inventorySlots[index];
             panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 255);
-        }
-        else if(inventorySlots[index] != null)
-        {
-            panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().sprite = null;
-            panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().color = new Color(0, 0, 0, 255);
+            panel.transform.GetChild(index).GetChild(0).GetChild(0).GetComponent<Text>().text = Inventory[index].amount.ToString();
         }
     }
 
