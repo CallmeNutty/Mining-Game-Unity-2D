@@ -17,23 +17,30 @@ public class InventoryManager : MonoBehaviour
 
     public static bool eKeyFree = true;
 
-    public Image[] InventorySlots;
+    public Sprite[] inventorySlots;
     public List<Item> Inventory = new List<Item>();
 
     // Use this for initialization
     void Start()
     {
-        InventorySlots = new Image[panel.transform.childCount];
+        //Set size of array
+        inventorySlots = new Sprite[panel.transform.childCount];
 
-        for(int k = 0; k < InventorySlots.Length; k++)
+        //Fill array with Inventory slot images
+        for(int k = 0; k < inventorySlots.Length; k++)
         {
-            InventorySlots[k] = panel.transform.GetChild(k).GetComponent<Image>();
+            inventorySlots[k] = panel.transform.GetChild(k).GetChild(0).GetComponent<Image>().sprite;
         }
     }
 
     // Update is called once per frame
     void Update ()
     {
+        for(int k = 0; k < inventorySlots.Length; k++)
+        {
+            DisplayIcon(k, true);
+        }
+
         //If E is pressed and menu is currently displayed
         if(Input.GetKeyDown(KeyCode.E) && menu.gameObject.activeInHierarchy == true && eKeyFree == true)
         {
@@ -67,10 +74,31 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    //Display text next to item in inventory
-    public void DisplayItem(GameObject panel)
+    //Add icon to appropriate inventory slots
+    public void AddToInventorySlots(Sprite icon)
     {
-        
+        for(int k = 0; k < inventorySlots.Length; k++)
+        {
+            if(inventorySlots[k] == null)
+            {
+                inventorySlots[k] = icon;
+                break;
+            }
+        }
+    }
+
+    public void DisplayIcon(int index, bool show)
+    {
+        if (show == true && inventorySlots[index] != null)
+        {
+            panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().sprite = inventorySlots[index];
+            panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 255);
+        }
+        else if(inventorySlots[index] != null)
+        {
+            panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().sprite = null;
+            panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().color = new Color(0, 0, 0, 255);
+        }
     }
 
     //Methods which activate and deactivate objects

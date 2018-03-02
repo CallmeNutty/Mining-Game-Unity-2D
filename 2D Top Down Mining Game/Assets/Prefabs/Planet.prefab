@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 58923628005746006}
   - component: {fileID: 114633265910885756}
   m_Layer: 0
-  m_Name: Erd
+  m_Name: Planet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

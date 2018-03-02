@@ -19,10 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4326574836100302}
-  - component: {fileID: 114999526788367964}
   - component: {fileID: 114851398082319348}
-  - component: {fileID: 114613556292276944}
   - component: {fileID: 114866702894950120}
+  - component: {fileID: 114613556292276944}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -54,8 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933a8d54844433049affa6c22b5ad15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  companyNameText: {fileID: 0}
   companyName: Nutty Inc
+  companyNameText: {fileID: 0}
 --- !u!114 &114851398082319348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,6 +70,7 @@ MonoBehaviour:
   menu: {fileID: 0}
   eKey: {fileID: 0}
   itemDatabase: {fileID: 114866702894950120}
+  inventorySlots: []
   Inventory: []
 --- !u!114 &114866702894950120
 MonoBehaviour:
@@ -89,17 +89,3 @@ MonoBehaviour:
     amount: 0
     baseValue: 1000
     icon: {fileID: 21300000, guid: 91395e9c92ec89749994b7272a427f67, type: 3}
---- !u!114 &114999526788367964
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1971414466793640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ba464c845e292548828c3930252da4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moneyText: {fileID: 0}
-  moneyTextBackdrop: {fileID: 0}
-  money: 0
