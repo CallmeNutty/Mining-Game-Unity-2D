@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114329043200069966}
   m_Layer: 0
   m_Name: Genrite
-  m_TagString: Untagged
+  m_TagString: Mineral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
