@@ -40,18 +40,16 @@ public class Planets : MonoBehaviour
 
     void Update()
     {
-        //If E is down and menu is not currently open
+        //If E is down and menu is not currently open and in zone
         if (Input.GetKeyDown(KeyCode.E) && inZone == true && planetMenu.activeInHierarchy == false)
         {
-            print("menu no");
             planetMenu.SetActive(true); //Show planet UI
             Time.timeScale = 0;
         }
-
+        //Else if E is down, menu is active and in zone
         else if (Input.GetKeyDown(KeyCode.E) && inZone == true && planetMenu.activeInHierarchy == true)
         {
-            print("menu yes");
-            planetMenu.SetActive(false);
+            planetMenu.SetActive(false); //Hide planet UI
             Time.timeScale = 1;
         }
     }
