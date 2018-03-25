@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,14 +10,14 @@ public class InventoryManager : MonoBehaviour
     [SerializeField]
     private GameObject panel;
     [SerializeField]
-    private Image menu;
+    private Image menu; //This is the 'E' inventory tab
     [SerializeField]
     private Image eKey;
     [SerializeField]
-    private Image toolBox;
+    private Image toolBox; //The box which shows the item
     [SerializeField]
     private ItemDatabase itemDatabase;
-
+    
     public static bool eKeyFree = true;
 
     public Sprite[] inventorySlots;
@@ -43,7 +44,18 @@ public class InventoryManager : MonoBehaviour
         //Every frame display all the icons in the inventory correctly
         for(int k = 0; k < inventorySlots.Length; k++)
         {
-            DisplayIcon(k, true);
+            DisplayIcon(k);
+        }
+
+        //Iterate through all of Inventory
+        for(int k = 0; k < Inventory.Count; k++)
+        {
+            //If 0 copies of this item exist
+            if(Inventory[k].amount == 0)
+            {
+                //Remove from the inventory
+                RemoveFromInventory(Inventory[k].icon, Inventory[k]);
+            }
         }
 
         //If E is pressed and menu is currently displayed
@@ -96,19 +108,60 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    //Show Icon in the game
-    public void DisplayIcon(int index, bool show)
+    public void RemoveFromInventory(Sprite icon, Item item)
     {
-        //If the icon should be shown and index in the List isn't empty
-        if (show == true && inventorySlots[index] != null)
+        Inventory.Remove(item);
+
+        //Iterate through all of inventory slots
+        for (int k = 0; k < inventorySlots.Length; k++)
+        {
+            //This finds the icon of the item that was just removed
+            if (inventorySlots[k] == icon)
+            {
+                //And sets it to null
+                inventorySlots[k] = null;
+            }
+        }
+
+        //Then sort the inventory
+        inventorySlots = SortArrayByNull(inventorySlots);
+    }
+
+    //Show Icon in the game
+    public void DisplayIcon(int index)
+    {
+        //If index in the List isn't empty
+        if (inventorySlots[index] != null)
         {
             //Display Sprite in the Slot Gameobject's Image component
             panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().sprite = inventorySlots[index];
             //Make Icon visible
             panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 255);
+
             //Display the amount of items in the Inventory
-            panel.transform.GetChild(index).GetChild(0).GetChild(0).GetComponent<Text>().text = Inventory[index].amount.ToString();
+            panel.transform.GetChild(index).GetChild(0).GetChild(0).GetComponent<Text>().text = Inventory[index].amount.ToString(); 
+            
         }
+        else
+        {
+            //Make sprite = null
+            panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().sprite = null;
+            //Hide Icon
+            panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 0);
+            //Hide text
+            panel.transform.GetChild(index).GetChild(0).GetChild(0).GetComponent<Text>().text = "";
+        }
+    }
+
+    //Sort array by putting nulls at the end
+    public Sprite[] SortArrayByNull(Sprite[] array)
+    {
+        //Create two collections with the nulls and nonnulls
+        var nulls = array.Where(x => x == null);
+        var nonnulls = array.Where(x => x != null);
+
+        //Return an array where the nulls are placed after the nonnulls
+        return nonnulls.Concat(nulls).ToArray();
     }
 
     //Methods which activate and deactivate objects
