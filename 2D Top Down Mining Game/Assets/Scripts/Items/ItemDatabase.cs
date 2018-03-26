@@ -11,5 +11,4 @@ public class ItemDatabase : MonoBehaviour
      * This saves me from having to deal with perfect string dependencies*/
 
     public List<Item> itemDatabase = new List<Item>();
-    public List<Planet> planetDatabase = new List<Planet>();
 }

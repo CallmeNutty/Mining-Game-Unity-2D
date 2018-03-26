@@ -16,9 +16,3 @@ public class Item : BaseItem
     public int amount;
     public int baseValue;
 }
-
-[System.Serializable]
-public class Planet : BaseItem
-{
-    public Item[] inventory;
-}
