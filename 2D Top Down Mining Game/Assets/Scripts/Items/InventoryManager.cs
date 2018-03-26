@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    //Declare Variables
+    //Declare Variable
     [SerializeField]
     private GameObject panel;
     [SerializeField]
@@ -142,6 +142,6 @@ public class InventoryManager : MonoBehaviour
     public void ActivatePanel(Image image, bool activate)
     {
         image.gameObject.SetActive(activate);
-        Time.timeScale = activate == true ? 0 : 1;
+        Time.timeScale = activate == true ? 0 : 1
     }
 }

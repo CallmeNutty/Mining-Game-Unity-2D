@@ -11,6 +11,10 @@ public class Movement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        //To stop program from taking input while paused
+        if (Time.timeScale == 0)
+            return;
+
         //Camera follows player(without rotating)
         Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
 
