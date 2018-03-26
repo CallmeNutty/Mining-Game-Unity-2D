@@ -44,7 +44,7 @@ public class InventoryManager : MonoBehaviour
         //Every frame display all the icons in the inventory correctly
         for(int k = 0; k < inventorySlots.Length; k++)
         {
-            DisplayIcon(k);
+            ExtensionMethods.DisplayIconsInInventory(k, panel, inventorySlots, Inventory);
         }
 
         //Iterate through all of Inventory
@@ -78,14 +78,14 @@ public class InventoryManager : MonoBehaviour
     //Adds item to the inventory
     public void AddToInventory(int ID, int amount)
     {
-        //Iterates through database
-        for (int k = 0; k < itemDatabase.database.Count; k++)
+        //Iterates through itemDatabase
+        for (int k = 0; k < itemDatabase.itemDatabase.Count; k++)
         {
             //If an ID matchup is made
-            if (itemDatabase.database[k].ID == ID)
+            if (itemDatabase.itemDatabase[k].ID == ID)
             {
                 //Store Item in a variable
-                Item addedItem = itemDatabase.database[k];
+                Item addedItem = itemDatabase.itemDatabase[k];
 
                 Inventory.Add(addedItem); //Add item to Inventory
                 addedItem.amount++; //Sets amount to 1 by default
@@ -125,33 +125,7 @@ public class InventoryManager : MonoBehaviour
 
         //Then sort the inventory
         inventorySlots = SortArrayByNull(inventorySlots);
-    }
-
-    //Show Icon in the game
-    public void DisplayIcon(int index)
-    {
-        //If index in the List isn't empty
-        if (inventorySlots[index] != null)
-        {
-            //Display Sprite in the Slot Gameobject's Image component
-            panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().sprite = inventorySlots[index];
-            //Make Icon visible
-            panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 255);
-
-            //Display the amount of items in the Inventory
-            panel.transform.GetChild(index).GetChild(0).GetChild(0).GetComponent<Text>().text = Inventory[index].amount.ToString(); 
-            
-        }
-        else
-        {
-            //Make sprite = null
-            panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().sprite = null;
-            //Hide Icon
-            panel.transform.GetChild(index).GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 0);
-            //Hide text
-            panel.transform.GetChild(index).GetChild(0).GetChild(0).GetComponent<Text>().text = "";
-        }
-    }
+    }  
 
     //Sort array by putting nulls at the end
     public Sprite[] SortArrayByNull(Sprite[] array)

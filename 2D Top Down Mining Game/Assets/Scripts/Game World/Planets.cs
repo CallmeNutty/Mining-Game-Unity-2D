@@ -53,4 +53,11 @@ public class Planets : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+
+    //Switches to specific menu tab from main hub
+    public void GoToMenu(GameObject menu)
+    {
+        menu.SetActive(true);
+        planetMenu.SetActive(false);
+    }
 }

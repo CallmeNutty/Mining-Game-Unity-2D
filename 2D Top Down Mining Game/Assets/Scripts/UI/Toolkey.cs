@@ -18,8 +18,15 @@ public class Toolkey : MonoBehaviour
 
     public void ShowToolKey()
     {
-        info.text = gameObject.transform.GetChild(0).GetComponent<Image>().sprite.name;
-        panel.gameObject.SetActive(true);
+        if (gameObject.transform.GetChild(0).GetComponent<Image>().sprite == null)
+        {
+            print("Empty :)");
+        }
+        else
+        {
+            info.text = gameObject.transform.GetChild(0).GetComponent<Image>().sprite.name;
+            panel.gameObject.SetActive(true);
+        }
     }
 
     public void HideToolKey()

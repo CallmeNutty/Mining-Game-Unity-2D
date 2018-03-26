@@ -28,7 +28,7 @@ public class Minerals : MonoBehaviour
             else //If this is the first copy
             {
                 inventoryManager.AddToInventory(thisItem.ID, 1); //Add class to Inventory List
-                inventoryManager.AddToInventorySlots(itemDatabase.database.Find(x => x.ID == thisItem.ID).icon);
+                inventoryManager.AddToInventorySlots(itemDatabase.itemDatabase.Find(x => x.ID == thisItem.ID).icon);
                 Destroy(coll.gameObject); //Destroy Bullet
                 Destroy(gameObject); //Destroy Self
             }

@@ -10,5 +10,6 @@ public class ItemDatabase : MonoBehaviour
      * So, if I wanted to add Gulm Rock to my Inventory, I can use its ID
      * This saves me from having to deal with perfect string dependencies*/
 
-    public List<Item> database = new List<Item>();
+    public List<Item> itemDatabase = new List<Item>();
+    public List<Planet> planetDatabase = new List<Planet>();
 }

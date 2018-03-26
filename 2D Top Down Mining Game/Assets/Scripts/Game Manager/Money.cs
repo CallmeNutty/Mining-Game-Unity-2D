@@ -15,6 +15,6 @@ public class Money : MonoBehaviour
 	void Update ()
     {
         //Show money on UI
-        moneyText.text = money + "$";
+        moneyText.text = money.ToString();
 	}
 }
