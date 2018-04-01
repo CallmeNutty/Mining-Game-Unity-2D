@@ -7,20 +7,21 @@ public class Planets : MonoBehaviour
 {
     //Declare Variables
     private bool inZone;
-
-    [SerializeField]
-    private Buy buyScript;
+    public int ID;
+    public float relations;
+    public static Planets currentPlanet;
+    
+    public Buy buyScript;
     [SerializeField]
     private GameObject eKey;
     [SerializeField]
     private GameObject planetMenu;
-
-    public List <Item> inventory;
     
     //Entered Planet Zone
     void OnTriggerStay2D(Collider2D coll)
     {
         inZone = true;
+        currentPlanet = this;
 
         //If player has entered the zone
         if (coll.tag == "Player")

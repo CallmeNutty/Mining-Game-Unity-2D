@@ -15,7 +15,7 @@ public static class ExtensionMethods
     }
 
     //Show Icon in the game
-    public static void DisplayIconsInInventory(int index, GameObject panel, Sprite[] inventorySlots, List<Item> Inventory)
+    public static void DisplayIconsInInventoryByIndex(int index, GameObject panel, Sprite[] inventorySlots, List<Item> Inventory)
     {
         //If index in the List isn't empty
         if (inventorySlots[index] != null)
@@ -38,5 +38,31 @@ public static class ExtensionMethods
             //Hide text
             panel.transform.GetChild(index).GetChild(0).GetChild(0).GetComponent<Text>().text = "";
         }
+    }
+
+    public static Item FindByID(int ID, List<Item> list)
+    {
+        for (int k = 0; k < list.Count; k++)
+        {
+            if (list[k].ID == ID)
+            {
+                return list[k];
+            }
+        }
+
+        return null;
+    }
+
+    public static Item FindBySprite(Sprite sprite, ItemDatabase itemDatabase)
+    {
+        for (int k = 0; k < itemDatabase.itemDatabase.Count; k++)
+        {
+            if (itemDatabase.itemDatabase[k].icon == sprite)
+            {
+                return itemDatabase.itemDatabase[k];
+            }
+        }
+
+        return null;
     }
 }

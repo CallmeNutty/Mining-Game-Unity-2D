@@ -33,3 +33,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+/2D Top Down Mining Game/.vs/2D Top Down Mining Game/v15/Server/sqlite3/db.lock

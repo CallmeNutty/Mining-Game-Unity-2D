@@ -44,7 +44,7 @@ public class InventoryManager : MonoBehaviour
         //Every frame display all the icons in the inventory correctly
         for(int k = 0; k < inventorySlots.Length; k++)
         {
-            ExtensionMethods.DisplayIconsInInventory(k, panel, inventorySlots, Inventory);
+            ExtensionMethods.DisplayIconsInInventoryByIndex(k, panel, inventorySlots, Inventory);
         }
 
         //Iterate through all of Inventory

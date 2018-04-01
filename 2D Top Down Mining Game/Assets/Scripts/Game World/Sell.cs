@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Sell : MonoBehaviour
 {
     [SerializeField]
-    private GameObject sellSlots;
+    private GameObject sellSlotGrid;
+    private Planets thisPlanet;
     [SerializeField]
     private InventoryManager inventoryManager;
     [SerializeField]
@@ -16,19 +18,41 @@ public class Sell : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        sellInventory = new Sprite[sellSlots.transform.childCount];
+        sellInventory = new Sprite[sellSlotGrid.transform.childCount];
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        thisPlanet = Planets.currentPlanet;
+
         //Sell Inventory slots are equal to the slots in the Inventory
         sellInventory = inventoryManager.inventorySlots;
 
         for (int k = 0; k < inventoryManager.inventorySlots.Length; k++)
         {
             //Displays icon inside the "sell" section of the buy/ sell menu
-            ExtensionMethods.DisplayIconsInInventory(k, sellSlots, sellInventory, inventoryManager.Inventory);
+            ExtensionMethods.DisplayIconsInInventoryByIndex(k, sellSlotGrid, sellInventory, inventoryManager.Inventory);
         }
+
+        for (int k = 0; k < sellSlotGrid.transform.childCount; k++)
+        {
+            if (sellInventory[k] != null)
+            {
+                //Updates price of item based on the CalculatePrice method
+                ExtensionMethods.FindBySprite(sellInventory[k], itemDatabase).eachPlanet.Find(x => x.ID == thisPlanet.ID).price
+                    = CalculatePrice(ExtensionMethods.FindBySprite(sellInventory[k], itemDatabase).ID);
+            }
+        }
+    }
+
+    //This method will take the ID of an item, use it's price and apply the specific calculations
+    public int CalculatePrice(int ID)
+    {
+        float baseCost = ExtensionMethods.FindByID(ID, itemDatabase.itemDatabase).baseValue;
+        float currentDemand = ExtensionMethods.FindByID(ID, itemDatabase.itemDatabase).eachPlanet.Find(x => x.ID == thisPlanet.ID).demand;
+        float currentRelations = thisPlanet.relations;
+
+        return Mathf.RoundToInt(baseCost * currentDemand * currentRelations);
     }
 }

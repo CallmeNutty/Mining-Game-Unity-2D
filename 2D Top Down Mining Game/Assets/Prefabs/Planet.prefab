@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 58505051353012842}
   - component: {fileID: 58923628005746006}
   - component: {fileID: 114633265910885756}
+  - component: {fileID: 114901229493434110}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -121,9 +122,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.007999903, y: 0}
+  m_Offset: {x: -0.005383972, y: 0}
   serializedVersion: 2
-  m_Radius: 0.58667386
+  m_Radius: 0.7514761
 --- !u!58 &58923628005746006
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -187,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc29dd97808aaf04c8986947c96c8065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buyScript: {fileID: 114901229493434110}
   eKey: {fileID: 1358950269765626}
   planetMenu: {fileID: 0}
 --- !u!114 &114769469771117500
@@ -222,6 +224,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Erd
+--- !u!114 &114901229493434110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1826178034921500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa4574b9e91d7e45b3562eee4723438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buySlotGrid: {fileID: 0}
+  planets: {fileID: 114633265910885756}
+  itemDatabase: {fileID: 0}
+  spriteSellInventory: []
+  PlanetInventory: []
 --- !u!212 &212196628737947236
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -297,8 +315,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1864758591
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 964fc6caf4f9cfc408416ccc7b893edf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
