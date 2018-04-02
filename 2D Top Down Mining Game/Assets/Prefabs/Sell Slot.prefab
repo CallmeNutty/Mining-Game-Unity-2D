@@ -111,6 +111,23 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114538235870338390}
+          m_MethodName: SellItem
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
 --- !u!114 &114524118931384326
 MonoBehaviour:
@@ -141,6 +158,8 @@ MonoBehaviour:
   itemName: {fileID: 0}
   cost: {fileID: 0}
   itemDatabase: {fileID: 0}
+  money: {fileID: 0}
+  inventoryManager: {fileID: 0}
 --- !u!114 &114776177835346278
 MonoBehaviour:
   m_ObjectHideFlags: 1
