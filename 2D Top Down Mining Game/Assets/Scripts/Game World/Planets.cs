@@ -16,7 +16,9 @@ public class Planets : MonoBehaviour
     private GameObject eKey;
     [SerializeField]
     private GameObject planetMenu;
-    
+    [SerializeField]
+    private Animator planetMenuAnimator;
+
     //Entered Planet Zone
     void OnTriggerStay2D(Collider2D coll)
     {
@@ -48,7 +50,6 @@ public class Planets : MonoBehaviour
         //If E is down and menu is not currently open and in zone
         if (Input.GetKeyDown(KeyCode.E) && inZone == true && planetMenu.activeInHierarchy == false)
         {
-            print("HELLO!");
             planetMenu.SetActive(true); //Show planet UI
             Time.timeScale = 0;
         }

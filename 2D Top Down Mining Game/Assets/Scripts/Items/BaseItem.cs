@@ -24,7 +24,6 @@ public class Planet
 {
     public string name;
     public int ID;
-    [HideInInspector]
     public int price;
     public float demand;
     public int amount;

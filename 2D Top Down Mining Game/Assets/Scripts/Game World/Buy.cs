@@ -38,13 +38,20 @@ public class Buy : MonoBehaviour
     {
         for (int k = 0; k < buySlotGrid.transform.childCount; k++)
         {
-            Planet thisItem = ExtensionMethods.FindBySprite(buySlots[k], itemDatabase).eachPlanet.Find(x => x.ID == thisPlanet.ID);
+            if (Planets.currentPlanet != null)
+            {
+                //Used for price
+                Planet thisItem = ExtensionMethods.FindBySprite(buySlots[k], itemDatabase).eachPlanet.Find(x => x.ID == thisPlanet.ID);
 
-            //Updates price of item based on the CalculatePrice method
-            thisItem.price = CalculatePrice(ExtensionMethods.FindBySprite(buySlots[k], itemDatabase).ID);
+                //Used for amount
+                Planet currentItem = ExtensionMethods.FindBySprite(buySlots[k], itemDatabase).eachPlanet.Find(x => x.ID == Planets.currentPlanet.ID);
 
-            //Displays amount
-            buySlotGrid.transform.GetChild(k).GetChild(0).GetChild(0).GetComponent<Text>().text = thisItem.amount.ToString();
+                //Updates price of item based on the CalculatePrice method
+                thisItem.price = CalculatePrice(ExtensionMethods.FindBySprite(buySlots[k], itemDatabase).ID);
+
+                //Displays amount
+                buySlotGrid.transform.GetChild(k).GetChild(0).GetChild(0).GetComponent<Text>().text = currentItem.amount.ToString();
+            }
         }
     }
 
@@ -55,6 +62,7 @@ public class Buy : MonoBehaviour
         float currentDemand = ExtensionMethods.FindByID(ID, itemDatabase.itemDatabase).eachPlanet.Find(x => x.ID == thisPlanet.ID).demand;
         float currentRelations = thisPlanet.relations;
 
+        print(Mathf.RoundToInt(baseCost * currentDemand * currentRelations));
         return Mathf.RoundToInt(baseCost * currentDemand * currentRelations);
     }
 }

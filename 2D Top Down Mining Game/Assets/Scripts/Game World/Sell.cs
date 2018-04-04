@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Sell : MonoBehaviour
 {
     [SerializeField]
+    private GameObject planetMenu;
+    [SerializeField]
     private GameObject sellSlotGrid;
     private Planets thisPlanet;
     [SerializeField]
@@ -28,6 +30,13 @@ public class Sell : MonoBehaviour
 
         //Sell Inventory slots are equal to the slots in the Inventory
         sellInventory = inventoryManager.inventorySlots;
+
+        //This simply allows you to exit back to the planet menu
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            gameObject.SetActive(false);
+            planetMenu.SetActive(true);
+        }
 
         for (int k = 0; k < inventoryManager.inventorySlots.Length; k++)
         {

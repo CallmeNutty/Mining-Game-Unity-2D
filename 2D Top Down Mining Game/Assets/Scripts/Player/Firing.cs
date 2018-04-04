@@ -12,6 +12,7 @@ public class Firing : MonoBehaviour
     [SerializeField]
     private GameObject emptyBulletHolder;
 
+    public int damagePerShot;
     [SerializeField]
     private float firingSpeed;
     private float timer;

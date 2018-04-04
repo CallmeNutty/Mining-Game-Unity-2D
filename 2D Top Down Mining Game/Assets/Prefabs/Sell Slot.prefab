@@ -160,6 +160,8 @@ MonoBehaviour:
   itemDatabase: {fileID: 0}
   money: {fileID: 0}
   inventoryManager: {fileID: 0}
+  soundManager: {fileID: 0}
+  boughtItemSound: {fileID: 8300000, guid: 01da7bf7793a8584ab24fb3efb1d2816, type: 3}
 --- !u!114 &114776177835346278
 MonoBehaviour:
   m_ObjectHideFlags: 1
